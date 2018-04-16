@@ -7,14 +7,15 @@ import javax.swing.*;
 /**
  * Minimal Java Swing application.
  * 
- * @author Nathan Sprague
- * 
+ * @author Nathan Sprague & Sara Avery
+ * @version 04/16/2018
  */
 public class GUIDemo extends JFrame
 {
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton resetButton;
 
     /**
      * Set up the application.
@@ -22,17 +23,20 @@ public class GUIDemo extends JFrame
     public GUIDemo()
     {
 	// new constructor code
-        setTitle("Bigger/Smaller");
+        setTitle("Bigger/Smaller/Reset");
         setSize(200, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new JPanel();
         biggerButton = new JButton("BIGGER");
         smallerButton = new JButton("SMALLER");
+        resetButton = new JButton("RESET");
         biggerButton.addActionListener(new ButtonHandler());
         smallerButton.addActionListener(new ButtonHandler());
+        resetButton.addActionListener(new ButtonHandler());
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
+        panel.add(resetButton);
         setVisible(true);
     }
 
@@ -53,6 +57,10 @@ public class GUIDemo extends JFrame
             if (e.getSource().equals(biggerButton))
             {
                 setSize(size.width + 10, size.height + 10);
+            }
+            else if (e.getSource().equals(resetButton)) 
+	    {
+		setSize(200, 100);
             }
             else
             {
